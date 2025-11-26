@@ -21,7 +21,7 @@ bool fire = false;
 int points = 0;
 
 //CRIAÇÃO DA CAMERA
-Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
+Camera camera(glm::vec3(0.0f, 0.0f, 0.0f));
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
 bool firstMouse = true;
@@ -71,7 +71,6 @@ int main()
 
 	glfwMakeContextCurrent(window);
 
-	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 	glewExperimental = GL_TRUE;
 	glewInit();
 
@@ -89,12 +88,14 @@ int main()
 
 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
+	
 	//CHÃO DO JOGO
 	Obj3D* ground = new Obj3D("cubo1.obj", glm::vec3(0.0f, -0.5f, 0.0f), glm::vec3(10.0f, 0.25f, 10.0f));
 	objects.push_back(ground);
 
 	//CUBO BASE
-	Obj3D* enemy = new Obj3D("cubo1.obj", glm::vec3(0.0f, 0.25f, 0.0f));
+	//Obj3D* enemy = new Obj3D("cubo1.obj", glm::vec3(0.0f, 0.25f, 0.0f));
+	
 
 	int lastTime = 0;
 
@@ -123,6 +124,7 @@ int main()
 			{
 				shader.setMat4("model", objects[i]->transform);
 				objects[i]->draw();
+				/*
 				if (bullets.size() != 0)
 				{
 					//CHECAR COLISSÃO DOS TIROS COM OS OBJETOS
@@ -133,13 +135,16 @@ int main()
 						}
 					}
 				}
+				*/
 			}
+			/*
 			//ATUALIZAR OS TIROS
 			for (Bullet* bull : bullets) {
 				UpdateBull(bull);
 			}
+			*/
 		}
-
+		/*
 		//RESETAR O COOLDOWN DOS TIROS
 		if (glfwGetTime() >= cooldown + cooldownTime)
 		{
@@ -182,7 +187,7 @@ int main()
 				lastTime = time;
 		}
 
-
+		*/
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
@@ -194,6 +199,7 @@ int main()
 
 void processInput(GLFWwindow* window)
 {
+	
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, true);
 
@@ -216,6 +222,7 @@ void processInput(GLFWwindow* window)
 
 	if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
 	{
+		/*
 		if (!fire)
 		{
 			fire = true;
@@ -223,8 +230,10 @@ void processInput(GLFWwindow* window)
 			Bullet* newbull = new Bullet();
 			bullets.push_back(newbull);
 		}
+		*/
+		
 	}
-
+	
 }
 
 float RandomFloat(float min, float max)

@@ -57,6 +57,7 @@ public:
 
     void ProcessKeyboard(Camera_Movement direction, float deltaTime)
     {
+        /*
         float velocity = MovementSpeed * deltaTime;
         if (direction == FORWARD)
             Position += Front * velocity;
@@ -68,7 +69,7 @@ public:
         if (direction == RIGHT)
             //Position += Right * velocity;
             Yaw += 2.0f;
-
+        */
         updateCameraVectors();
     }
 
